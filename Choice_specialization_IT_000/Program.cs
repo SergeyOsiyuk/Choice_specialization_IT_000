@@ -11,3 +11,39 @@
 // Алгоритм: запрашиваем количество строк массива → вводим посточно элементы массива с клавиатуры → выводим на печать введенный массив → 
 // формируем массив с учётом условия задачи (меньше или равно 3 символа) → выводим на печать полученный массив → end;
 
+Console.WriteLine("Введите количество строк массива: ");
+int rows  = int.Parse(Console.ReadLine());
+
+string[] arr1 = new string[rows];
+
+for (int i = 0; i < rows; i++){
+    Console.Write($"Введите элементы массива в строке {i+1} из {rows}: ");
+    string result = Console.ReadLine();
+    arr1[i] = result;  
+}
+Console.WriteLine();
+Console.Write("Введенный массив: [");
+Console.Write(string.Join(",", arr1));
+Console.Write("]");
+
+int count = 0;
+int maxSymbols = 3;
+
+for (int i = 0; i < arr1.Length; i++){
+    if(arr1[i].Length <= maxSymbols){
+        count++;
+    }   
+}
+Console.WriteLine();
+Console.Write("Полученный массив: [");
+string[] arr2 = new string[count];
+int j = 0;
+for (int i = 0; i < arr1.Length; i++){
+    if(arr1[i].Length <= maxSymbols){
+        arr2[j] = arr1[i];
+        Console.Write(arr2[j] + ",");
+        j++;
+    }
+}
+Console.Write("]");
+
